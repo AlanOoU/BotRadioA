@@ -37,7 +37,7 @@ const { Client, Collection, Options } = require('discord.js');
     return r;
   };
 
-  client.config = require("./config.json")
+  client.config = require("./config.js")
   client.login(client.config.token)
   client.plugins = new Collection();
   client.commands = new Collection();

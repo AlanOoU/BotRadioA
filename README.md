@@ -17,7 +17,7 @@ Installer bien [Discord JS](https://discord.js.org/#/) sur votre projet sinon le
 
 ### 1er démarrage
 
-Aller dans le fichier [/config.json], et remplacer "token" par votre bot Token !
+Rennomer le fichier [/.env.sample] en [/.env], et remplacer "votre-token" par votre bot Token !
 
 -> Dans un terminal noter = ``node main``
 
