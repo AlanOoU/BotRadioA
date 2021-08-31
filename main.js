@@ -1,45 +1,49 @@
-const Discord = require('discord.js'),
-    client = new Discord.Client(),
-    config = require('./config.json')
-    fs = require('fs')
-    const fetch = require('node-fetch')
-client.login(config.token)
-client.commands = new Discord.Collection()
+const { Client, Collection, Options } = require('discord.js');
 
- 
-fs.readdir('./commands', (err, files) => {
-    if (err) throw err
-    files.forEach(file => {
-        if (!file.endsWith('.js')) return
-        const command = require(`./commands/${file}`)
-        client.commands.set(command.name, command)
-    })
-})
- 
-client.on('message', message => {
-    if (message.type !== 'DEFAULT' || message.author.bot) return
- 
-    const args = message.content.trim().split(/ +/g)
-    const commandName = args.shift().toLowerCase()
-    if (!commandName.startsWith(config.prefix)) return
-    const command = client.commands.get(commandName.slice(config.prefix.length))
-    if (!command) return
-    command.run(message, args, client)
-})
+(async() => {
 
-var myVar = setInterval(act, 2000);
+  let client = new Client({ 
+    intents: ["DIRECT_MESSAGES", "DIRECT_MESSAGE_REACTIONS", "DIRECT_MESSAGE_TYPING", "GUILDS", "GUILD_BANS","GUILD_INTEGRATIONS", "GUILD_INVITES", "GUILD_MEMBERS","GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILD_MESSAGE_TYPING", "GUILD_PRESENCES", "GUILD_VOICE_STATES", "GUILD_WEBHOOKS"],
+    partials: [
+      'USER',
+      'GUILD_MEMBER',
+      'MESSAGE',
+      'REACTION',
+      "CHANNEL"
+    ],
+    makeCache: Options.cacheWithLimits({
+      PresenceManager: 200,
+    }),
+    allowedMentions: {
+      parse: ['users', 'roles'],
+      repliedUser: false,
+    },
+  });
 
-function act() {
-    fetch('https://manager6.streamradio.fr:2320/status-json.xsl?mount=/stream').then(res => res.json()).then(body =>
-    client.user.setActivity((body.icestats.source.title), {type: 'LISTENING'}));
-  }
+  accentsTidy = function (s) {
+    var r = s.toLowerCase();
+    r = r.replace(new RegExp(/\s/g), "");
+    r = r.replace(new RegExp(/[àáâãäå]/g), "a");
+    r = r.replace(new RegExp(/æ/g), "ae");
+    r = r.replace(new RegExp(/ç/g), "c");
+    r = r.replace(new RegExp(/[èéêë]/g), "e");
+    r = r.replace(new RegExp(/[ìíîï]/g), "i");
+    r = r.replace(new RegExp(/ñ/g), "n");
+    r = r.replace(new RegExp(/[òóôõö]/g), "o");
+    r = r.replace(new RegExp(/œ/g), "oe");
+    r = r.replace(new RegExp(/[ùúûü]/g), "u");
+    r = r.replace(new RegExp(/[ýÿ]/g), "y");
+    r = r.replace(new RegExp(/\W/g), "");
+    return r;
+  };
 
+  client.config = require("./config.json")
+  client.login(client.config.token)
+  client.plugins = new Collection();
+  client.commands = new Collection();
+  client.interactCommands = new Collection();
+  client.cooldowns = new Collection();
+  module.exports = client;
+  require("./util/handler")(client);
 
-
-  
-client.once('ready', () => {
-        act()
-    })
-
-console.log(`Est en ligne !`);
-console.log('Commands = .join / .leave / .info')
+})();

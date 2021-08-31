@@ -6,10 +6,11 @@
     "@discordjs/voice": "^0.6.0",
     "cpu-stat": "^2.0.1",
     "discord-api-types": "^0.22.0",
-    "discord.js": "^12.5.3",
-    "ffmpeg": "0.0.4",
+    "discord.js": "^13.1.0",
+    "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^4.4.0",
-    "fs": "0.0.1-security",
-    "opus": "0.0.0"
+    "fs": "^0.0.1-security",
+    "libsodium-wrappers": "^0.7.9",
+    "opus": "^0.0.0"
   }
 }
