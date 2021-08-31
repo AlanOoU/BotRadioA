@@ -1,4 +1,4 @@
-# Alice-Radio-Bot-Discord
+# Radio A
 
 Un simple bot radio ^^
 
@@ -17,17 +17,11 @@ Installer bien [Discord JS](https://discord.js.org/#/) sur votre projet sinon le
 
 ### 1er démarrage
 
-Aller dans le fichier [/config.json](https://github.com/SaabniaTv/Alice-Radio-Bot-Discord-2/blob/main/config.json), et remplacer "token" par votre bot Token !
+Aller dans le fichier [/config.json], et remplacer "token" par votre bot Token !
 
 -> Dans un terminal noter = ``node main``
 
 ## Config
 Changez tous les placeholders du fichier ``config.json``.:
  - `token`: Ton bot token
- - `streamurl`: Le lien à strem (lien radio nrj, ou youtube ou autres)
- - `name`: Le statue du bot (joue a.....)
  - `prefix`: Le prefix du bot
-
-## Autheur
-
-* **Alice** _alias_ [@SaabniaTv](https://github.com/SaabniaTv) UwU
