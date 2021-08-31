@@ -1,6 +1,6 @@
 # Radio A
 
-Un simple bot radio ^^
+Invite : [link](https://discord.com/oauth2/authorize?client_id=836323025527504907&scope=bot&permissions=8)
 
 ## Avant toute chose !
 
