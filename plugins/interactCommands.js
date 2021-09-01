@@ -33,7 +33,7 @@ loadCmds = async (nodebug = false) => {
 
   client.on("ready", async () => {
     await client.application.commands.set(arrayOfinteractCommands);
-    await client.guilds.cache.get("872612194200731729").commands.set(arrayOfinteractCommands);
+    // await client.guilds.cache.get("872612194200731729").commands.set(arrayOfinteractCommands);
   })
 }
 loadCmds();
